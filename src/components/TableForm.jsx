@@ -9,7 +9,7 @@ const TableForm = () => {
 
     const onSubmit = (formData) => {
         if (editItemId) {
-            handleEditSubmit(formData);
+            handleEditSubmit(formData);  //formData = data of form
         } else {
             const newData = { id: uuidv4(), ...formData };
             setData((prevData) => [...prevData, newData]);
@@ -69,6 +69,9 @@ const TableForm = () => {
                     ))}
                 </tbody>
             </table>
+            {
+                data.length == 0 && <div style={{padding: "10px"}}>There have no data added yet.</div>
+            }
             <div style={{ marginTop: "10px" }}>
                 <form onSubmit={handleSubmit(onSubmit)} style={{ border: '1px solid blue', padding: "20px", display: "flex" }}>
                     <div>
