@@ -70,32 +70,37 @@ const TableForm = () => {
                 </tbody>
             </table>
             {
-                data.length == 0 && <div style={{padding: "10px"}}>There have no data added yet.</div>
+                data.length == 0 && <div style={{ padding: "10px" }}>There have no data added yet.</div>
             }
             <div style={{ marginTop: "10px" }}>
                 <form onSubmit={handleSubmit(onSubmit)} style={{ border: '1px solid blue', padding: "20px", display: "flex" }}>
                     <div>
                         <label>Username</label>
-                        <input {...register('username')} style={{ padding: "5px", marginLeft: "5px" }} />
+                        <input type='text' required {...register('username', { required: true })} style={{ padding: "5px", marginLeft: "5px" }} />
                     </div>
                     <div>
                         <label>Phone</label>
-                        <input {...register('phone')} style={{ padding: "5px" }} />
+                        <input type='number' required {...register('phone', { required: true })} style={{ padding: "5px" }} />
                     </div>
 
                     <div>
                         <label>Email</label>
-                        <input {...register('email')} style={{ padding: "5px" }} />
+                        <input type='email' {...register('email', { required: true })} required style={{ padding: "5px" }} />
                     </div>
 
                     <div>
                         <label>Price</label>
-                        <input {...register('price')} style={{ padding: "5px" }} />
+                        <input
+                            type='number'
+                            {...register('price')}
+                            style={{ padding: '5px' }}
+                            required
+                        />
                     </div>
 
                     <div>
                         <label>Quantity</label>
-                        <input {...register('quantity')} style={{ padding: "5px" }} />
+                        <input type='number' required {...register('quantity')} style={{ padding: "5px" }} />
                     </div>
 
                     <button type="submit">{editItemId ? 'Update' : 'Submit'}</button>
